@@ -1,0 +1,9 @@
+git status					!!! Tells about the status of the local files
+git add .					!!! It stages to the git db/repo
+git commit -m "NOTES"		!!! It updates the local repo 
+git push origin main		!!! It uploads to the remote 
+git pull origin main		!!! It downloads from the remote 
+
+
+
+git remote set-url origin https://yourgithubusername:yourpersonalaccesstoken@github.com/yourgithubusername/reponame.git
