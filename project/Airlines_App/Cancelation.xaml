@@ -5,9 +5,103 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Airlines_App"
         mc:Ignorable="d"
-        Title="Cancelation" Height="450" Width="800">
-    <Grid>
-        <!--<Button x:Name="btn_dashbord" Content="Dashboard" HorizontalAlignment="Left" Margin="694,10,0,0" VerticalAlignment="Top" Height="32" Width="75" Click="btn_dashbord_Click"/>-->
+        Title="Cancelation" Height="450" Width="800" WindowState="Maximized">
+    <Canvas  DataContext="{Binding Path=SelectedItem,ElementName=dtg_GrdTicket}">
+        <Canvas.Background>
+            <ImageBrush ImageSource="/airline5.jpg"/>
+        </Canvas.Background>
+        <Label Content="AirLines" Height="45" Width="148" FontWeight="Bold" FontFamily="Algerian" FontSize="24" Canvas.Left="33" Canvas.Top="20">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFB9B2C0" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+        <Button x:Name="btn_logout" Content="Logout" Height="32" Width="76" Click="btn_dashbord_Click" Canvas.Left="1177" Canvas.Top="20">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFAF9D9D" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+  
 
-    </Grid>
+        <DataGrid x:Name="dtg_GrdTicket" 
+            Height="247"  
+            Width="850"
+            AutoGenerateColumns="False" Canvas.Left="200" Canvas.Top="210" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding  ticket_id}"  Header="Ticket Id" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding  flight_id}"  Header="Flight Id" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding UserName}" Header="User Name" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Airline_name}" Header="Airline Name" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding source}" Header="Source" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding destination}" Header="Destination" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Total_Amount}" Header="Total Amount" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Class}" Header="Class" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Date}" Header="Date" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding No_Of_Tickets}" Header="No. Of Tickets" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding flight_charge}" Header="flight charge" IsReadOnly="True"/>
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btn_dashboard" Content="Dashboard" Canvas.Left="1101" Canvas.Top="20" Height="32" Width="65" Click="btn_dashboard_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFAF9D9D" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF393636" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Foreground>
+        </Button>
+
+
+        <TextBox x:Name="txt_flight_id" Text="{Binding Path= flight_id}"  TextWrapping="Wrap" Width="0" Height="1" Canvas.Left="316" Canvas.Top="297" RenderTransformOrigin="0.5,0.5">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+
+        <TextBox x:Name="txt_noOfTickets" Text="{Binding Path= No_Of_Tickets}"  TextWrapping="Wrap" Width="0" Height="1" Canvas.Left="316" Canvas.Top="297" RenderTransformOrigin="0.5,0.5">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+
+
+        <Button x:Name="btn_Calcle" Content="Cancle" Canvas.Left="980" Canvas.Top="470" Height="40" Width="80" Click="btn_Calcle_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFAF9D9D" Offset="1.1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF393636" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Foreground>
+        </Button>
+
+
+    </Canvas>
 </Window>
