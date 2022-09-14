@@ -1,7 +1,7 @@
 # ignore ALL .log files
 # *.log
 Airlines_App.sln
-
+Airlines_App.csproj.user
 # ignore ALL files in ANY directory named temp
 bin/
 obj/
