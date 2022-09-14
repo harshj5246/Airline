@@ -1,0 +1,82 @@
+﻿<Window x:Class="Airlines_App.Dashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Airlines_App"
+        mc:Ignorable="d"
+        Title="Dashboard" Height="450" Width="800">
+    <Canvas x:Name="can" DataContext="{Binding Path=SelectedItem,ElementName=dtg_GrdFlight}"  >
+        <Canvas.Background>
+            <ImageBrush ImageSource="/airline2.jpg"/>
+        </Canvas.Background>
+        <Button x:Name="btn_search" Content="Search" Height="31" Width="96" Click="btn_search_Click" Canvas.Left="690" Canvas.Top="106">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+        <Label x:Name="lbl_source" Content="Source" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="16" RenderTransformOrigin="0.611,0.663" Canvas.Left="81" Canvas.Top="77"/>
+        <TextBox x:Name="txt_source"  TextWrapping="Wrap" Width="127" Height="27" Canvas.Left="81" Canvas.Top="113"/>
+        <Label x:Name="lbl_destination" Content="Destination" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="16" RenderTransformOrigin="0.611,0.663" Canvas.Left="252" Canvas.Top="77"/>
+        <TextBox x:Name="txt_destination" TextWrapping="Wrap" Width="127" Height="27" Canvas.Left="252" Canvas.Top="113"/>
+        <Label x:Name="lbl_date" Content="Date" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="16" RenderTransformOrigin="0.611,0.663" Canvas.Left="434" Canvas.Top="77"/>
+        <DatePicker x:Name="dp_date" Height="27" Width="131" Canvas.Left="434" Canvas.Top="113"/>
+
+
+        <Label Content="AirLines" HorizontalAlignment="Left" Margin="38,10,0,0" VerticalAlignment="Top" Height="45" Width="148" FontWeight="Bold" FontFamily="Algerian" FontSize="24">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFB9B2C0" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+        <Label x:Name="lblwelcome" Content="Welcome " HorizontalAlignment="Left" Margin="603,15,0,0" VerticalAlignment="Top" Height="40" Width="102"/>
+        <Button x:Name="btn_logout" Content="Logout" HorizontalAlignment="Left" Margin="710,15,0,0" VerticalAlignment="Top" Height="26" Width="56" Click="btn_logout_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <DataGrid x:Name="dtg_GrdFlight" 
+            Height="247" 
+            Width="673"
+            AutoGenerateColumns="False" Canvas.Top="187" Visibility="Hidden">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding  flight_id}" Header="Flight Id" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Airline_name}" Header="Airline Name" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding source}" Header="Source" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding designation}" Header="Destination" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding seat_capacity}" Header="Seat Capicity" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding depature}" Header="depature" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding arraival_time}" Header="arraival" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding flight_charge}"  Header="flight charge" IsReadOnly="True"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="txt_flightid" Text="{Binding Path= flight_id}"  TextWrapping="Wrap" Width="0" Height="1" Canvas.Left="316" Canvas.Top="297" RenderTransformOrigin="0.5,0.5">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <Button x:Name="btn_Book" Content="Book" Height="31" Width="96" Canvas.Left="690" Canvas.Top="339" Visibility="Hidden" Click="btn_Book_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+    </Canvas>
+</Window>

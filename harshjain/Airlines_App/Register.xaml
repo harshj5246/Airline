@@ -1,0 +1,85 @@
+﻿<Window x:Class="Airlines_App.Register"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Airlines_App"
+       
+        mc:Ignorable="d"
+        Title="Register" Height="660" Width="815"  WindowState="Maximized">
+    <Window.Background>
+        <ImageBrush ImageSource="/airline5.jpg"/>
+    </Window.Background>
+    <Canvas>
+        <Label x:Name="lb_username" Content="USER NAME" Height="38" Width="108" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="14" Canvas.Left="78" Canvas.Top="76"/>
+        <Label x:Name="lb_fullname" Content="Full NAME" Height="38" Width="94" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="14" Canvas.Left="78" Canvas.Top="120"/>
+
+        <Label x:Name="lb_email" Content="EMAIL ID" Height="43" Width="94" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="14" Canvas.Left="78" Canvas.Top="163"/>
+
+        <Label x:Name="lb_phonenumber" Content="PHONE NUMBER" Height="36" Width="149" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="14" Canvas.Left="78" Canvas.Top="216"/>
+        <Label x:Name="lb_gender" Content="GENDER" Height="34" Width="94" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="14" Canvas.Left="78" Canvas.Top="264"/>
+        <Label x:Name="lb_Dob" Content="Date Of Birth" Height="34" Width="94" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="14" Canvas.Left="78" Canvas.Top="302"/>
+
+        <Label x:Name="lb_password" Content="PASSWORD" Height="35" Width="94" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="14" Canvas.Left="78" Canvas.Top="353"/>
+        <Label x:Name="lb_confirmpassword" Content="CONFIRM PASSWORD" Height="46" Width="173" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="14" Canvas.Left="78" Canvas.Top="403"/>
+        <Button x:Name="lb_register" Content="REGISTER" Height="61" Width="182" Click="lb_register_Click" Canvas.Left="271" Canvas.Top="477">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <TextBox x:Name="txt_username" Height="38"  TextWrapping="Wrap" Width="396" Canvas.Left="271" Canvas.Top="76"/>
+        <TextBox x:Name="txt_fullname" Height="38"  TextWrapping="Wrap" Width="396" Canvas.Left="271" Canvas.Top="120"/>
+
+        <TextBox x:Name="txt_email" Height="43"  TextWrapping="Wrap" Width="396" Canvas.Left="271" Canvas.Top="163"/>
+        <TextBox x:Name="txt_phonenumber" Height="46" TextWrapping="Wrap" Width="396" Canvas.Left="271" Canvas.Top="211"/>
+
+        <RadioButton x:Name="rdo_male" Content="MALE" Height="21" Width="110" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="14" Foreground="Black" Click="rdo_male_Click" Canvas.Left="271" Canvas.Top="270">
+            <RadioButton.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </RadioButton.Background>
+        </RadioButton>
+        <RadioButton x:Name="rdo_female" Content="FEMALE" Height="21" Width="104" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="14" Foreground="Black" Click="rdo_female_Click" Canvas.Left="393" Canvas.Top="270">
+            <RadioButton.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </RadioButton.Background>
+        </RadioButton>
+        <RadioButton x:Name="rdo_prefernotosay" Content="PREFER NO TO SAY" Height="36" Width="165" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="14" Foreground="Black" Click="rdo_prefernotosay_Click" Canvas.Left="502" Canvas.Top="270">
+            <RadioButton.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </RadioButton.Background>
+        </RadioButton>
+        <Button x:Name="btn_login" Content="Login" Height="61" Width="158" Click="btn_login_Click" Canvas.Left="509" Canvas.Top="477" >
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <PasswordBox x:Name="p_password" Height="49" Width="396" Canvas.Left="271" Canvas.Top="346"/>
+        <PasswordBox x:Name="p_confirmpassword" Height="46" Width="396" Canvas.Left="271" Canvas.Top="400"/>
+
+        <Label Content="AirLines" HorizontalAlignment="Left" Margin="38,10,0,0" VerticalAlignment="Top" Height="45" Width="148" FontWeight="Bold" FontFamily="Algerian" FontSize="24">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFB9B2C0" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+        <DatePicker x:Name="Dp_Dob" Height="45" Width="396" Canvas.Left="271" Canvas.Top="296"/>
+
+    </Canvas>
+</Window>
