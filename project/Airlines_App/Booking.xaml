@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Airlines_App"
         mc:Ignorable="d"
-        Title="Booking" Height="450" Width="800">
+        Title="Booking" Height="483" Width="959" WindowState="Maximized">
     <Canvas>
         <Canvas.Background>
             <ImageBrush ImageSource="/airline5.jpg"/>
         </Canvas.Background>
-        <Button x:Name="btn_logout" Content="Logout" Height="32" Width="76" Click="btn_dashbord_Click" Canvas.Left="714" Canvas.Top="12">
+        <Button x:Name="btn_logout" Content="Logout" Height="32" Width="76" Click="btn_logout_Click" Canvas.Left="1187" Canvas.Top="23">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
@@ -18,8 +18,8 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Label x:Name="lbl_Noftickets" Content="Number of Tickets" RenderTransformOrigin="4.636,1.923" Height="31" Width="132" FontWeight="Bold" FontSize="14" FontFamily="Arial Unicode MS" Canvas.Left="400" Canvas.Top="100"/>
-        <TextBox x:Name="txt_fightid" Height="36" TextWrapping="Wrap" Width="145" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden" Canvas.Left="144" Canvas.Top="143"/>
+        <Label x:Name="lbl_Noftickets" Content="Number of Tickets" RenderTransformOrigin="4.636,1.923" Height="38" Width="132" FontWeight="Bold" FontSize="14" FontFamily="Arial Unicode MS" Canvas.Left="559" Canvas.Top="133"/>
+        <TextBox x:Name="txt_flightid" Height="28" TextWrapping="Wrap" Width="145" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden" Canvas.Left="254" Canvas.Top="171"/>
         <Label Content="AirLines" HorizontalAlignment="Left" Margin="38,10,0,0" VerticalAlignment="Top" Height="45" Width="148" FontWeight="Bold" FontFamily="Algerian" FontSize="24">
             <Label.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -28,7 +28,7 @@
                 </LinearGradientBrush>
             </Label.Background>
         </Label>
-        <Label x:Name="lbl_Flightid" Content="Flight ID" RenderTransformOrigin="4.636,1.923" Height="30" Width="106" FontWeight="Bold" FontSize="16" FontFamily="Arial Unicode MS" Canvas.Left="42" Canvas.Top="150">
+        <Label x:Name="lbl_Flightid" Content="Flight ID" RenderTransformOrigin="4.636,1.923" Height="32" Width="106" FontWeight="Bold" FontSize="16" FontFamily="Arial Unicode MS" Canvas.Left="151" Canvas.Top="167">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -38,8 +38,8 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <TextBox x:Name="txt_noftickets" Height="31" TextWrapping="Wrap" Width="156" Canvas.Left="576" Canvas.Top="100"/>
-        <Label x:Name="lbl_username" Content="Username" RenderTransformOrigin="4.636,1.923" Height="30" Width="109" FontWeight="Bold" FontSize="16" FontFamily="Arial Unicode MS" Canvas.Left="42" Canvas.Top="97">
+        <TextBox x:Name="txt_noftickets" Height="22" TextWrapping="Wrap" Width="153" Canvas.Left="738" Canvas.Top="133"/>
+        <Label x:Name="lbl_username" Content="Username" RenderTransformOrigin="4.636,1.923" Height="30" Width="109" FontWeight="Bold" FontSize="16" FontFamily="Arial Unicode MS" Canvas.Left="152" Canvas.Top="79">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -49,8 +49,8 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <TextBox x:Name="txt_usernamebk" Height="31"  TextWrapping="Wrap" Width="145" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden" IsReadOnly="True"  Canvas.Left="144" Canvas.Top="97"/>
-        <Label x:Name="lb_source" Content="Source" RenderTransformOrigin="4.636,1.923" Height="29" Width="78" FontWeight="Bold" FontSize="16" FontFamily="Arial Unicode MS" Canvas.Left="42" Canvas.Top="191">
+        <TextBox x:Name="txt_usernamebk" Height="25"  TextWrapping="Wrap" Width="145" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden" IsReadOnly="True"  Canvas.Left="254" Canvas.Top="85"/>
+        <Label x:Name="lb_source" Content="Source" RenderTransformOrigin="4.636,1.923" Height="34" Width="78" FontWeight="Bold" FontSize="16" FontFamily="Arial Unicode MS" Canvas.Left="150" Canvas.Top="220">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -60,8 +60,8 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <TextBox x:Name="txt_sourcebk" Height="30" TextWrapping="Wrap" Width="145" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden" IsReadOnly="True"  Canvas.Left="144" Canvas.Top="194"/>
-        <Label x:Name="lb_destination" Content="Destination" RenderTransformOrigin="4.636,1.923" Height="32" Width="98" FontWeight="Bold" FontSize="16" FontFamily="Arial Unicode MS" Canvas.Left="42" Canvas.Top="243">
+        <TextBox x:Name="txt_sourcebk" Height="22" TextWrapping="Wrap" Width="145" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden" IsReadOnly="True"  Canvas.Left="254" Canvas.Top="222"/>
+        <Label x:Name="lb_destination" Content="Destination" RenderTransformOrigin="4.636,1.923" Height="29" Width="98" FontWeight="Bold" FontSize="16" FontFamily="Arial Unicode MS" Canvas.Left="151" Canvas.Top="270">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -71,8 +71,8 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <TextBox x:Name="txt_destinationbk" Height="31" TextWrapping="Wrap" Width="145" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden" RenderTransformOrigin="0.476,2.4" IsReadOnly="True"  Canvas.Left="145" Canvas.Top="243"/>
-        <Label x:Name="lb_date" Content="Date" RenderTransformOrigin="4.636,1.923" Height="28" Width="88" FontWeight="Bold" FontSize="16" FontFamily="Arial Unicode MS" Canvas.Left="42" Canvas.Top="303">
+        <TextBox x:Name="txt_destinationbk" Height="27" TextWrapping="Wrap" Width="145" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden" RenderTransformOrigin="0.476,2.4" IsReadOnly="True"  Canvas.Left="255" Canvas.Top="273"/>
+        <Label x:Name="lb_date" Content="Date" RenderTransformOrigin="4.636,1.923" Height="27" Width="88" FontWeight="Bold" FontSize="16" FontFamily="Arial Unicode MS" Canvas.Left="151" Canvas.Top="325">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -82,8 +82,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <DatePicker x:Name="dp_date" Height="34" Width="145" Canvas.Left="145" Canvas.Top="299"/>
-        <Label x:Name="lb_Class" Content="Class" RenderTransformOrigin="4.636,1.923" Height="28" Width="89" FontWeight="Bold" FontSize="14" FontFamily="Arial Unicode MS" Canvas.Left="419" Canvas.Top="153">
+        <Label x:Name="lb_Class" Content="Class" RenderTransformOrigin="4.636,1.923" Height="43" Width="89" FontWeight="Bold" FontSize="14" FontFamily="Arial Unicode MS" Canvas.Left="575" Canvas.Top="175">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -93,8 +92,13 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <ComboBox x:Name="cmb_class" Height="31"  Width="156" Canvas.Left="576" Canvas.Top="153"/>
-        <Button x:Name="btn_bookticket" Content="Book Ticket" Width="153"  Height="52" Click="BtnBook_click" Canvas.Left="576" Canvas.Top="250">
+        <ComboBox x:Name="cmb_class" Height="32"  Width="156" Canvas.Left="735" Canvas.Top="170" SelectionChanged="cmb_class_SelectionChanged" >
+            <ComboBoxItem Content = "First Class" />
+            <ComboBoxItem Content = "Economy " />
+            <ComboBoxItem Content = "Business" />
+        </ComboBox>
+
+        <Button x:Name="btn_bookticket" Content="Book Ticket" Width="153"  Height="52" Click="BtnBook_click" Canvas.Left="735" Canvas.Top="335">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
@@ -102,5 +106,29 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
+        <Label x:Name="lbl_totalamont" Content="Total Amount" RenderTransformOrigin="4.636,1.923" Height="39" Width="132" FontWeight="Bold" FontSize="14" FontFamily="Arial Unicode MS" Canvas.Left="559" Canvas.Top="250"/>
+        <TextBox x:Name="txt_totalamount" Height="39" Canvas.Left="735" TextWrapping="Wrap"  Canvas.Top="250" Width="156" MouseEnter="txt_totalamount_MouseEnter" IsReadOnly="True" />
+        <TextBox x:Name="txt_Arilinenamebk" Height="22"  TextWrapping="Wrap" Width="144" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden" IsReadOnly="True"  Canvas.Left="255" Canvas.Top="127" RenderTransformOrigin="0.393,-2.968"/>
+        <Label x:Name="lbl_airlinename" Content="Arline Name" RenderTransformOrigin="4.636,1.923" Height="30" Width="109" FontWeight="Bold" FontSize="16" FontFamily="Arial Unicode MS" Canvas.Left="151" Canvas.Top="116">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-2.328"/>
+                    <RotateTransform Angle="-0.254"/>
+                    <TranslateTransform X="-9.459"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBox x:Name="txt_flightcharge" Height="22" Canvas.Left="738" TextWrapping="Wrap"  Canvas.Top="91" Width="153"/>
+        <Label x:Name="lbl_flightcharge" Content="Flight Charge" RenderTransformOrigin="4.636,1.923" Height="44" Width="132" FontWeight="Bold" FontSize="14" FontFamily="Arial Unicode MS" Canvas.Left="559" Canvas.Top="77"/>
+        <Button x:Name="lbl_dashboard" Content="Dashboard" Height="32" Width="106" Click="btn_dashbord_Click" Canvas.Left="1072" Canvas.Top="23">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFAF9D9D" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <TextBox x:Name="txt_datebk" Height="24" Canvas.Left="255" TextWrapping="Wrap"  Canvas.Top="335" Width="145" IsReadOnly="True"/>
     </Canvas>
 </Window>

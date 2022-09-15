@@ -79,17 +79,17 @@
     <Compile Include="Booking.xaml.cs">
       <DependentUpon>Booking.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BookingDetails.xaml.cs">
+      <DependentUpon>BookingDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Cancelation.xaml.cs">
       <DependentUpon>Cancelation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ConfirmBooking.xaml.cs">
+      <DependentUpon>ConfirmBooking.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Flight.xaml.cs">
-      <DependentUpon>Flight.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="FlightList.xaml.cs">
-      <DependentUpon>FlightList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -109,19 +109,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="BookingDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Cancelation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ConfirmBooking.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dashboard.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Flight.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="FlightList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -198,6 +198,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="airline5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="airline6.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="airline7.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="airline8.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="airline9.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

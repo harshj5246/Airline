@@ -5,19 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Airlines_App"
         mc:Ignorable="d"
-        Title="AdminLogin" Height="450" Width="800">
+        Title="AdminLogin" Height="450" Width="800" WindowState="Maximized">
     <Window.Background>
         <ImageBrush ImageSource="/airline5.jpg"/>
     </Window.Background>
 
-    <Canvas Height="440" Width="800">
-        <Canvas.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="Black"/>
-                <GradientStop Color="White" Offset="1"/>
-            </LinearGradientBrush>
-        </Canvas.Background>
-        <Button x:Name="btn_userlogin" Content="User Login" Height="40" Width="72" Click="btn_adminLogin_Click" Canvas.Left="687" Canvas.Top="30">
+    <Canvas Height="700" Width="1300">
+
+        <Button x:Name="btn_userlogin" Content="User Login" Height="40" Width="72" Click="btn_adminLogin_Click" Canvas.Left="1177" Canvas.Top="30">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
@@ -26,11 +21,11 @@
             </Button.Background>
         </Button>
 
-        <Label x:Name="lbl_username" Content="User Name" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="14" Canvas.Left="312" Canvas.Top="125"/>
-        <Label x:Name="lbl_password" Content="Passwoed" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="14" Canvas.Left="312" Canvas.Top="192"/>
-        <TextBox x:Name="txt_userName" TextWrapping="Wrap" Width="176" Height="33" Canvas.Left="312" Canvas.Top="159" TabIndex="0"/>
-        <PasswordBox x:Name="p_password" Width="176" RenderTransformOrigin="0.208,1.731" Height="34" Canvas.Left="312" Canvas.Top="221" TabIndex="1"/>
-        <Button x:Name="btn_login" Content="Login" Click="btn_login_Click" Width="72" Height="33" Canvas.Left="354" Canvas.Top="281" TabIndex="2">
+        <Label x:Name="lbl_username" Content="User Name" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="14" Canvas.Left="509" Canvas.Top="255"/>
+        <Label x:Name="lbl_password" Content="Password" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="14" Canvas.Left="509" Canvas.Top="308"/>
+        <TextBox x:Name="txt_userName" TextWrapping="Wrap" Width="176" Height="33" Canvas.Left="510" Canvas.Top="278" TabIndex="0"/>
+        <PasswordBox x:Name="p_password" Width="176" RenderTransformOrigin="0.208,1.731" Height="34" Canvas.Left="510" Canvas.Top="330" TabIndex="1"/>
+        <Button x:Name="btn_login" Content="Login" Click="btn_login_Click" Width="72" Height="33" Canvas.Left="560" Canvas.Top="370" TabIndex="2">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>

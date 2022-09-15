@@ -5,14 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Airlines_App"
         mc:Ignorable="d"
-        Title="Admin" Height="458" Width="820" WindowState="Maximized">
-    <Grid x:Name="Flight_Details" Margin="0,0,10,-6" >
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="Black"/>
-                <GradientStop Color="White" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
+        Title="Admin" Height="458" Width="820" >
+    <Canvas DataContext="{Binding Path=SelectedItem,ElementName=dtg_GrdFlight }" Grid.Row="2" Margin="0,0,0,30" >
+        <Canvas.Background>
+            <ImageBrush ImageSource="/airline4.jpg"/>
+        </Canvas.Background>
+
         <DataGrid x:Name="dtg_GrdFlight" HorizontalAlignment="Left" 
             Height="247" Margin="19,102,0,0" 
             VerticalAlignment="Top" 
@@ -27,6 +25,7 @@
                 <DataGridTextColumn Binding="{Binding depature}" Header="depature" IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding arraival_time}" Header="arraival" IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding flight_charge}" Header="flight charge" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Seat_Left}" Header="Seat Left" IsReadOnly="True"/>
 
             </DataGrid.Columns>
         </DataGrid>
@@ -71,18 +70,19 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Label x:Name="LblFlightId" Content="Flight ID" HorizontalAlignment="Left" Margin="456,91,0,0" VerticalAlignment="Top" Height="28" Width="77" FontWeight="Bold" FontSize="14" FontFamily="Arial Unicode MS"/>
-        <Label x:Name="LblSource" Content="Source" HorizontalAlignment="Left" Margin="456,161,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.409,3.231" Height="34" Width="77" FontWeight="Bold" FontSize="14" FontFamily="Arial Unicode MS"/>
-        <Label x:Name="LblDestination" Content="Destination" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="4.636,1.923" Margin="456,189,0,0" Height="26" Width="90" FontWeight="Bold" FontSize="14" FontFamily="Arial Unicode MS"/>
-        <Label x:Name="LblAirlinename" Content="Airline Name" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="4.636,1.923" Margin="456,124,0,0" Height="26" Width="110" FontWeight="Bold" FontSize="14" FontFamily="Arial Unicode MS"/>
-        <Label x:Name="LblSeatcapicity" Content="Seat Capicity" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="4.636,1.923" Margin="456,217,0,0" Height="30" Width="110" FontWeight="Bold" FontSize="14" FontFamily="Arial Unicode MS"/>
-        <Label x:Name="lbl_flightcharge" Content="Flight charge" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="4.636,1.923" Margin="451,312,0,0" Height="34" Width="100" FontWeight="Bold" FontSize="14" FontFamily="Arial Unicode MS"/>
-        <TextBox x:Name="TxtFlightID" HorizontalAlignment="Left" Height="28" Margin="571,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" Background="White" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
-        <TextBox x:Name="TxtSource" HorizontalAlignment="Left" Height="22" Margin="571,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
-        <TextBox x:Name="TxtDestination" HorizontalAlignment="Left" Height="23" Margin="571,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
-        <TextBox x:Name="TxtAirlineName" HorizontalAlignment="Left" Height="23" Margin="571,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
-        <TextBox x:Name="TxtSeatCapicity" HorizontalAlignment="Left" Height="24" Margin="571,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
-        <TextBox x:Name="txt_flightcharge" HorizontalAlignment="Left" Height="28" Margin="571,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
+        <Label x:Name="LblFlightId" Content="Flight ID" Height="28" Width="77" FontWeight="Bold" FontSize="14" FontFamily="Arial Unicode MS" Canvas.Left="469" Canvas.Top="55"/>
+        <Label x:Name="LblSource" Content="Source" RenderTransformOrigin="1.409,3.231" Height="34" Width="77" FontWeight="Bold" FontSize="14" FontFamily="Arial Unicode MS" Canvas.Left="469" Canvas.Top="119"/>
+        <Label x:Name="LblDestination" Content="Destination" RenderTransformOrigin="4.636,1.923" Height="26" Width="90" FontWeight="Bold" FontSize="14" FontFamily="Arial Unicode MS" Canvas.Left="469" Canvas.Top="153"/>
+        <Label x:Name="LblAirlinename" Content="Airline Name" RenderTransformOrigin="4.636,1.923"  Height="26" Width="97" FontWeight="Bold" FontSize="14" FontFamily="Arial Unicode MS" Canvas.Left="469" Canvas.Top="88"/>
+        <Label x:Name="LblSeatcapicity" Content="Seat Capicity" RenderTransformOrigin="4.636,1.923" Height="30" Width="110" FontWeight="Bold" FontSize="14" FontFamily="Arial Unicode MS" Canvas.Left="469" Canvas.Top="184"/>
+        <Label x:Name="lbl_flightcharge" Content="Flight charge" RenderTransformOrigin="4.636,1.923" Height="34" Width="100" FontWeight="Bold" FontSize="14" FontFamily="Arial Unicode MS" Canvas.Left="469" Canvas.Top="309"/>
+
+        <TextBox x:Name="TxtFlightID" Text="{Binding Path=flight_id}" Height="28"  TextWrapping="Wrap" Width="222" Background="White" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden" Canvas.Left="571" Canvas.Top="55"/>
+        <TextBox x:Name="TxtSource" Text="{Binding Path=source}" Height="22"  TextWrapping="Wrap" Width="222" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden" Canvas.Left="571" Canvas.Top="125"/>
+        <TextBox x:Name="TxtDestination"  Text="{Binding Path=designation}" Height="23"  TextWrapping="Wrap" Width="222" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden" Canvas.Left="571" Canvas.Top="156"/>
+        <TextBox x:Name="TxtAirlineName" Text="{Binding Path=Airline_name}" Height="23"  TextWrapping="Wrap" Width="222" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden" Canvas.Left="571" Canvas.Top="91"/>
+        <TextBox x:Name="TxtSeatCapicity" Text="{Binding Path=seat_capacity}" Height="24"  TextWrapping="Wrap" Width="222" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden" Canvas.Left="571" Canvas.Top="187"/>
+        <TextBox x:Name="txt_flightcharge" Text="{Binding Path=flight_charge}" HorizontalAlignment="Left" Height="28" Margin="571,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
 
         <Button x:Name="BtnSave" Content="Save" HorizontalAlignment="Left" Margin="464,358,0,0" VerticalAlignment="Top" Width="74"  Height="26" Click="BtnSave_Click">
             <Button.Background>
@@ -108,11 +108,20 @@
                 </LinearGradientBrush>
             </Label.Background>
         </Label>
-        <Label x:Name="LblSeatcapicity_Copy" Content="Seat Capicity" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="4.636,1.923" Margin="456,217,0,0" Height="30" Width="110" FontWeight="Bold" FontSize="14" FontFamily="Arial Unicode MS"/>
-        <Label x:Name="lbl_Depature" Content="Depature" HorizontalAlignment="Left" Height="27" Margin="456,249,0,0" VerticalAlignment="Top" Width="90" FontFamily="Arial Unicode MS" FontWeight="Bold" FontSize="14"/>
-        <Label x:Name="lbl_arraival" Content="Arraival" HorizontalAlignment="Left" Height="23" Margin="456,282,0,0" VerticalAlignment="Top" Width="90" FontFamily="Arial Rounded MT Bold" FontSize="14"/>
-        <TextBox x:Name="txt_depature" HorizontalAlignment="Left" Height="27" Margin="571,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
-        <TextBox x:Name="txt_arrival" HorizontalAlignment="Left" Height="24" Margin="571,281,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+        <Label x:Name="lbl_Depature" Content="Depature" Height="27" Width="90" FontFamily="Arial Unicode MS" FontWeight="Bold" FontSize="14" Canvas.Left="469" Canvas.Top="219"/>
+        <Label x:Name="lbl_arraival" Content="Arraival" Height="23" Width="90" FontFamily="Arial Rounded MT Bold" FontSize="14" Canvas.Left="469" Canvas.Top="281"/>
+        <TextBox x:Name="txt_depature" Text="{Binding Path=depature}" Height="27" TextWrapping="Wrap" Width="222" Canvas.Left="571" Canvas.Top="220"/>
+        <TextBox x:Name="txt_arrival" Text="{Binding Path=arraival_time}" HorizontalAlignment="Left" Height="24" Margin="571,281,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+        <Label x:Name="lbl_seat_left"  Content="Seats Left" RenderTransformOrigin="4.636,1.923" Height="34" Width="100" FontWeight="Bold" FontSize="14" FontFamily="Arial Unicode MS" Canvas.Left="469" Canvas.Top="251"/>
+        <TextBox x:Name="txt_seat_left" Canvas.Left="571" Text="{Binding Path=Seat_Left}" TextWrapping="Wrap" Canvas.Top="252" Width="222" Height="24"/>
+        <Button x:Name="btn_booking" Content="Bookings" Height="32" Width="75"  Canvas.Left="601" Canvas.Top="10" Click="btn_booking_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFAF9D9D" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
 
-    </Grid>
+    </Canvas>
 </Window>

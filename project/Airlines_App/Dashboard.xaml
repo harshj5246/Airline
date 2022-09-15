@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Airlines_App"
         mc:Ignorable="d"
-        Title="Dashboard" Height="450" Width="800">
-    <Canvas x:Name="can" DataContext="{Binding Path=SelectedItem,ElementName=dtg_GrdFlight}"  >
+        Title="Dashboard" Height="450" Width="800" WindowState="Maximized">
+    <Canvas x:Name="can" DataContext="{Binding Path=SelectedItem,ElementName=dtg_GrdFlight}" Margin="0,0,-481,-47"  >
         <Canvas.Background>
-            <ImageBrush ImageSource="/airline2.jpg"/>
+            <ImageBrush ImageSource="/airline9.jpg"/>
         </Canvas.Background>
-        <Button x:Name="btn_search" Content="Search" Height="31" Width="96" Click="btn_search_Click" Canvas.Left="690" Canvas.Top="106">
+        <Button x:Name="btn_search" Content="Search" Height="31" Width="96" Click="btn_search_Click" Canvas.Left="914" Canvas.Top="201">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
@@ -19,12 +19,12 @@
             </Button.Background>
         </Button>
 
-        <Label x:Name="lbl_source" Content="Source" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="16" RenderTransformOrigin="0.611,0.663" Canvas.Left="81" Canvas.Top="77"/>
-        <TextBox x:Name="txt_source"  TextWrapping="Wrap" Width="127" Height="27" Canvas.Left="81" Canvas.Top="113"/>
-        <Label x:Name="lbl_destination" Content="Destination" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="16" RenderTransformOrigin="0.611,0.663" Canvas.Left="252" Canvas.Top="77"/>
-        <TextBox x:Name="txt_destination" TextWrapping="Wrap" Width="127" Height="27" Canvas.Left="252" Canvas.Top="113"/>
-        <Label x:Name="lbl_date" Content="Date" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="16" RenderTransformOrigin="0.611,0.663" Canvas.Left="434" Canvas.Top="77"/>
-        <DatePicker x:Name="dp_date" Height="27" Width="131" Canvas.Left="434" Canvas.Top="113"/>
+        <Label x:Name="lbl_source" Content="Source" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="16" RenderTransformOrigin="0.611,0.663" Background="CornflowerBlue" Canvas.Left="294" Canvas.Top="174"/>
+        <TextBox x:Name="txt_source"  TextWrapping="Wrap" Width="127" Height="27" Canvas.Left="295" Canvas.Top="214"/>
+        <Label x:Name="lbl_destination" Content="Destination" Background="CornflowerBlue" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="16" RenderTransformOrigin="0.611,0.663" Canvas.Left="464" Canvas.Top="174"/>
+        <TextBox x:Name="txt_destination" TextWrapping="Wrap" Width="127" Height="27" Canvas.Left="466" Canvas.Top="214"/>
+        <Label x:Name="lbl_date" Content="Date" Background="CornflowerBlue" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="16" RenderTransformOrigin="0.611,0.663" Canvas.Left="648" Canvas.Top="174"/>
+        <DatePicker x:Name="dp_date" Height="27" Width="131" Canvas.Left="648" Canvas.Top="214"/>
 
 
         <Label Content="AirLines" HorizontalAlignment="Left" Margin="38,10,0,0" VerticalAlignment="Top" Height="45" Width="148" FontWeight="Bold" FontFamily="Algerian" FontSize="24">
@@ -35,8 +35,8 @@
                 </LinearGradientBrush>
             </Label.Background>
         </Label>
-        <Label x:Name="lblwelcome" Content="Welcome " HorizontalAlignment="Left" Margin="603,15,0,0" VerticalAlignment="Top" Height="40" Width="102"/>
-        <Button x:Name="btn_logout" Content="Logout" HorizontalAlignment="Left" Margin="710,15,0,0" VerticalAlignment="Top" Height="26" Width="56" Click="btn_logout_Click">
+        <Label x:Name="lblwelcome" Content="Welcome " FontSize="20" Height="90" Width="502" Canvas.Left="920" Canvas.Top="20"  FontWeight="Bold" FontFamily="Colonna MT"/>
+        <Button x:Name="btn_logout" Content="Logout" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="30" Width="70" Click="btn_logout_Click" Canvas.Left="1200" Canvas.Top="20">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
@@ -46,8 +46,8 @@
         </Button>
         <DataGrid x:Name="dtg_GrdFlight" 
             Height="247" 
-            Width="673"
-            AutoGenerateColumns="False" Canvas.Top="187" Visibility="Hidden">
+            Width="520"
+            AutoGenerateColumns="False" Canvas.Left="300" Canvas.Top="350" Visibility="Hidden">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding  flight_id}" Header="Flight Id" IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding Airline_name}" Header="Airline Name" IsReadOnly="True"/>
@@ -70,7 +70,25 @@
                 </TransformGroup>
             </TextBox.RenderTransform>
         </TextBox>
-        <Button x:Name="btn_Book" Content="Book" Height="31" Width="96" Canvas.Left="690" Canvas.Top="339" Visibility="Hidden" Click="btn_Book_Click">
+        <TextBox x:Name="txt_airlinename" Text="{Binding Path= Airline_name}"  TextWrapping="Wrap" Width="0" Height="1" Canvas.Left="316" Canvas.Top="297" RenderTransformOrigin="0.5,0.5">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <Button x:Name="btn_Book" Content="Book" Height="31" Width="96" Canvas.Left="850" Canvas.Top="560" Visibility="Hidden" Click="btn_Book_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btn_cancle" Content="Ticket Calcle " Canvas.Left="1100" Canvas.Top="20" Height="30" Width="90" Click="btn_cancle_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>

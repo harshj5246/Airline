@@ -188,6 +188,10 @@ namespace Airlines_App
 
                 con.Close();
                 cmd.Dispose();
+
+                Login login = new Login();
+                this.Visibility = Visibility.Collapsed;
+                login.Show();
                
             }
 

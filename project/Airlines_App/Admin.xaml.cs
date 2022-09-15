@@ -25,6 +25,7 @@ namespace Airlines_App
         public Admin()
         {
             InitializeComponent();
+            TxtSeatCapicity.Text = txt_seat_left.Text;
         }
 
         string conString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Airlines_App;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
@@ -50,7 +51,7 @@ namespace Airlines_App
             SqlConnection con = new SqlConnection(conString);
             con.Open();
             SqlCommand cmd = new SqlCommand();
-            string que = ("insert into Flight values ('" + TxtFlightID.Text + "','" + TxtAirlineName.Text + "','" + TxtSource.Text + "','" + TxtDestination.Text + "'," + TxtSeatCapicity.Text + ",'" + txt_depature.Text + "' ,'" + txt_arrival.Text + "'," + txt_flightcharge.Text + " )");
+            string que = ("insert into Flight values ('" + TxtFlightID.Text + "','" + TxtAirlineName.Text + "','" + TxtSource.Text + "','" + TxtDestination.Text + "'," + TxtSeatCapicity.Text + ",'" + txt_depature.Text + "' ,'" + txt_arrival.Text + "'," + txt_flightcharge.Text +  ","+ txt_seat_left.Text+ " )");
 
             cmd.CommandText = que;
             cmd.Connection = con;
@@ -73,7 +74,7 @@ namespace Airlines_App
         {
             SqlConnection con = new SqlConnection(conString);
             con.Open();
-            string query = "SELECT flight_id,Airline_name,source,designation,seat_capacity,depature,arraival_time,flight_charge FROM Flight";
+            string query = "SELECT flight_id,Airline_name,source,designation,seat_capacity,depature,arraival_time,flight_charge,Seat_Left FROM Flight";
             SqlCommand cmd = new SqlCommand(query, con);
 
 
@@ -142,8 +143,8 @@ namespace Airlines_App
             SqlConnection con = new SqlConnection(conString);
             con.Open();
             SqlCommand cmd = new SqlCommand();
-            string que = ("Update Flight set  Airline_name = '" + TxtAirlineName.Text + "',source = '" + TxtSource.Text + "',  designation = '" + TxtDestination.Text + "', seat_capacity = " + TxtSeatCapicity.Text + ", depature = '" + txt_depature.Text + "', arraival_time = '" + txt_arrival.Text +"',flight_charge = " +txt_flightcharge.Text +" Where flight_id ='" + TxtFlightID.Text+"'");
-            MessageBox.Show(que);
+            string que = ("Update Flight set  Airline_name = '" + TxtAirlineName.Text + "',source = '" + TxtSource.Text + "',  designation = '" + TxtDestination.Text + "', seat_capacity = " + TxtSeatCapicity.Text + ", depature = '" + txt_depature.Text + "', arraival_time = '" + txt_arrival.Text +"',flight_charge = " +txt_flightcharge.Text + ", Seat_Left = " + txt_seat_left.Text + " Where flight_id ='" + TxtFlightID.Text+"'");
+          
 
             cmd.CommandText = que;
             cmd.Connection = con;
@@ -159,6 +160,13 @@ namespace Airlines_App
             BtnLoad_Click(null, null);
             BtnNew_Click(null, null);
 
+        }
+
+        private void btn_booking_Click(object sender, RoutedEventArgs e)
+        {
+            BookingDetails bookingDetails = new BookingDetails();
+            this.Visibility = Visibility.Collapsed;
+            bookingDetails.Show();
         }
     }
 }

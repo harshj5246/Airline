@@ -25,13 +25,16 @@ namespace Airlines_App
         string conString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Airlines_App;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         public static string flightid;
-        
+        public static string airline;
+        public static string date;
+
 
 
         public Dashboard()
         {
             InitializeComponent();
-            lblwelcome.Content += Login.username;
+            lblwelcome.Content = "Welcome " + Login.username;
+            dp_date.DisplayDateStart = DateTime.Now;
 
         }
 
@@ -54,6 +57,12 @@ namespace Airlines_App
                 return;
 
             }
+            else if(dp_date.Text == String.Empty)
+            {
+                txt_destination.Focus();
+                MessageBox.Show("Select the Date ");
+                return;
+            }
             else
             {
                 //source = txt_source.Text;
@@ -65,7 +74,7 @@ namespace Airlines_App
                 //flightList.Show();
 
                 dtg_GrdFlight.Visibility = Visibility.Visible;
-                btn_Book.Visibility = Visibility.Visible;
+              
 
                 SqlConnection con = new SqlConnection(conString);
                 con.Open();
@@ -78,7 +87,14 @@ namespace Airlines_App
                 DataTable dt = new DataTable();
                 dt.Load(reader);
                 dtg_GrdFlight.ItemsSource = dt.DefaultView;
-                
+                if (dt.Rows.Count > 0)
+                {
+                    btn_Book.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    MessageBox.Show("NO FLIGHT Avilable");
+                }
                 con.Close();
 
             }
@@ -94,10 +110,20 @@ namespace Airlines_App
 
         private void btn_Book_Click(object sender, RoutedEventArgs e)
         {
+
             flightid = txt_flightid.Text;
+            airline = txt_airlinename.Text;
+            date = dp_date.Text;
             Booking booking = new Booking();
             this.Visibility = Visibility.Collapsed;
             booking.Show();
+        }
+
+        private void btn_cancle_Click(object sender, RoutedEventArgs e)
+        {
+            Cancelation cancelation = new Cancelation();
+            this.Visibility = Visibility.Collapsed;
+            cancelation.Show();
         }
     }
 }
