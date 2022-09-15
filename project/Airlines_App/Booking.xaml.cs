@@ -22,6 +22,7 @@ namespace Airlines_App
     /// </summary>
     public partial class Booking : Window
     {
+        public static long flightid;
         public Booking()
         {
             InitializeComponent();
@@ -77,7 +78,8 @@ namespace Airlines_App
             SqlConnection con = new SqlConnection(conString);
             con.Open();
 
-            string qur = ("INSERT INTO Booking values ('" + txt_flightid.Text + "','"+ txt_usernamebk.Text + "','"+ txt_Arilinenamebk.Text +"','"+ txt_sourcebk.Text +"','"+ txt_destinationbk.Text +"',"+ txt_totalamount.Text +",'" + cmb_class.Text.ToString() + "','"+ txt_datebk.Text + "'," + txt_noftickets.Text +")" );
+            string qur = string.Format("insert into booking(flight_id,username,source,destination,class,date,no_of_tickets,total_amount,Airline_name) values('{0}','{1}','{2}','{3}','{4}','{5}',{6},{7},'{8}');select scope_identity();", txt_flightid.Text, txt_usernamebk.Text, txt_sourcebk.Text, txt_destinationbk.Text, cmb_class.Text.ToString(), txt_datebk.Text, txt_noftickets.Text, txt_totalamount.Text,txt_Arilinenamebk.Text); 
+
             SqlCommand cmd = new SqlCommand(qur, con);
 
             int no1 = seats();
@@ -98,7 +100,9 @@ namespace Airlines_App
 
 
 
-            cmd.ExecuteNonQuery();
+            long newid = long.Parse(cmd.ExecuteScalar().ToString());
+            flightid = newid;
+
 
             con.Close();
             MessageBoxResult res = MessageBox.Show("Do you want to Confirm Ticket booking?", "Confirmation", MessageBoxButton.OKCancel);
