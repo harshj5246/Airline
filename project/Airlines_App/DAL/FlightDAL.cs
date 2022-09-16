@@ -57,9 +57,7 @@ source, destination);
 
             return flights;
         }
-        public static List<FlightModel> ReadAll(
-            
-            )
+        public static List<FlightModel> ReadAll()
         {
             List<FlightModel> flights = new List<FlightModel>();
 

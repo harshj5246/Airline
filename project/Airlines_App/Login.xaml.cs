@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
+using Airlines_App.DAL;
 
 namespace Airlines_App
 {
@@ -37,32 +38,18 @@ namespace Airlines_App
 
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection con = new SqlConnection(conString);
-            
-            string selectQuery = "select * from Users where UserName = '" + txt_userName.Text + "' and  Password = '" + p_password.Password + "'";
-            SqlDataAdapter adapter = new SqlDataAdapter(selectQuery, con);
-
-            DataSet ds = new DataSet();
-
-            adapter.Fill(ds);
-            if (ds.Tables[0].Rows.Count == 0)
+            bool ans = UsersDAL.ReadBySearch(txt_userName.Text, p_password.Password);
+            if (!ans)
             {
-                MessageBox.Show("User Name or Password Incorrect");
+                MessageBox.Show("Incorrect UserName Or Password");
+                return;
             }
-            else
-            {
-                //SqlConnection cone = new SqlConnection(conString);
-
-                //string que = ("insert into Login values('" + txt_userName.Text + "','" + p_password.Password + "')");
-                //cone.Open();
-                //SqlCommand cmd = new SqlCommand(que, cone);
-                //cmd.ExecuteNonQuery();
-                username = txt_userName.Text;
+            username = txt_userName.Text;
 
                 Dashboard dashboard = new Dashboard();
                 this.Visibility = Visibility.Collapsed;
                 dashboard.Show();
-            }
+            
         }
 
         private void btn_adminLogin_Click(object sender, RoutedEventArgs e)

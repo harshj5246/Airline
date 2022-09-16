@@ -18,8 +18,9 @@ namespace Airlines_App.Model
         public double flight_charge { get; set; }
         public int Seat_Left { get; set; }
 
-        public FlightModel():
-            this(string.Empty,
+
+
+        public FlightModel() : this(string.Empty,
                 string.Empty,
                 string.Empty,
                 string.Empty,
@@ -28,6 +29,7 @@ namespace Airlines_App.Model
                 string.Empty,
                 0,
                 0)
+
         {
         }
 

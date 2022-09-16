@@ -8,7 +8,7 @@
         Title="Dashboard" Height="450" Width="800" WindowState="Maximized">
     <Canvas x:Name="can" DataContext="{Binding Path=SelectedItem,ElementName=dtg_GrdFlight}" Margin="0,0,-481,-47"  >
         <Canvas.Background>
-            <ImageBrush ImageSource="/airline9.jpg"/>
+            <ImageBrush ImageSource="/airline1.jpg"/>
         </Canvas.Background>
         <Button x:Name="btn_search" Content="Search" Height="31" Width="96" Click="btn_search_Click" Canvas.Left="914" Canvas.Top="201">
             <Button.Background>

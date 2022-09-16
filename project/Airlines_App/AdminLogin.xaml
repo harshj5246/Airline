@@ -21,6 +21,16 @@
             </Button.Background>
         </Button>
 
+        <Canvas Width="376" Height="269" Canvas.Left="414" Canvas.Top="189">
+            <Canvas.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Canvas.Background>
+
+
+        </Canvas>
         <Label x:Name="lbl_username" Content="User Name" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="14" Canvas.Left="509" Canvas.Top="255"/>
         <Label x:Name="lbl_password" Content="Password" FontWeight="Bold" FontFamily="Arial Unicode MS" FontSize="14" Canvas.Left="509" Canvas.Top="308"/>
         <TextBox x:Name="txt_userName" TextWrapping="Wrap" Width="176" Height="33" Canvas.Left="510" Canvas.Top="278" TabIndex="0"/>

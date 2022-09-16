@@ -89,14 +89,18 @@
       <DependentUpon>ConfirmBooking.xaml</DependentUpon>
     </Compile>
     <Compile Include="ConnectionString.cs" />
+    <Compile Include="DAL\AdminDAL.cs" />
     <Compile Include="DAL\FlightDAL.cs" />
+    <Compile Include="DAL\UsersDAL.cs" />
     <Compile Include="Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\AdminModel.cs" />
     <Compile Include="Model\FlightModel.cs" />
+    <Compile Include="Model\UsersModel.cs" />
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>

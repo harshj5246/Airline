@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
+using Airlines_App.DAL;
+using Airlines_App.Model;
 
 namespace Airlines_App
 {
@@ -174,22 +176,30 @@ namespace Airlines_App
             }
             else
             {
-                SqlConnection con = new SqlConnection(conString);
-                string que = ("insert into Users values('"+ txt_username.Text + "','" + txt_fullname.Text +"','"+ txt_email.Text + "',"+ txt_phonenumber.Text +",'" + gender +"','" + p_password.Password +"','"+p_confirmpassword.Password +"','" + Dp_Dob.DisplayDate +"')");
-                con.Open();
-                SqlCommand cmd = new SqlCommand(que,con);
-               
-                if(cmd.ExecuteNonQuery() != 0)
+                UsersModel model = new UsersModel();
+                model.UserName = txt_username.Text;
+                model.FullName = txt_fullname.Text;
+                model.EmailId = txt_email.Text;
+
+                model.PhoneNo = long.Parse(txt_phonenumber.Text);
+
+                model.Gender = gender;
+                model.Password = p_password.Password;
+                model.ConfirmPassword = p_confirmpassword.Password;
+                model.DOB = Dp_Dob.Text;
+                bool res = UsersDAL.Create(model);
+                if (!res)
                 {
-                    MessageBox.Show("User register succesfully");
-                    Clear();
-
-
+                    MessageBox.Show("User is not register");
+                    return;
                 }
+                MessageBox.Show("User register succesfully");
 
 
-                con.Close();
-                cmd.Dispose();
+                Clear();
+
+
+                
 
                 Login login = new Login();
                 this.Visibility = Visibility.Collapsed;
