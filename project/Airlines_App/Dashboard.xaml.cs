@@ -22,7 +22,7 @@ namespace Airlines_App
     /// </summary>
     public partial class Dashboard : Window
     {
-        string conString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Airlines_App;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        string conString = ConnectionString.conString;
 
         public static string flightid;
         public static string airline;
@@ -110,10 +110,15 @@ namespace Airlines_App
 
         private void btn_Book_Click(object sender, RoutedEventArgs e)
         {
-
+            
             flightid = txt_flightid.Text;
             airline = txt_airlinename.Text;
             date = dp_date.Text;
+            if(flightid == String.Empty)
+            {
+                MessageBox.Show("Please Select Flight");
+                return;
+            }
             Booking booking = new Booking();
             this.Visibility = Visibility.Collapsed;
             booking.Show();

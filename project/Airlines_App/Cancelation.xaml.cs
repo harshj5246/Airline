@@ -22,7 +22,8 @@ namespace Airlines_App
     /// </summary>
     public partial class Cancelation : Window
     {
-        string conString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Airlines_App;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        string conString = ConnectionString.conString;
+        
         int ticket_id =0;
         public Cancelation()
         {
@@ -57,12 +58,12 @@ namespace Airlines_App
                 ticket_id = int.Parse(ds.Tables[0].Rows[0]["ticket_id"].ToString());
 
             }
-            //else{
-            //    MessageBox.Show("No Booked Tickets Avlable");
-
-            //}
+          
+            
+           
 
             con.Close();
+           
         }
 
         private void btn_dashboard_Click(object sender, RoutedEventArgs e)

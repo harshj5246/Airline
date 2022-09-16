@@ -26,8 +26,7 @@ namespace Airlines_App
         {
             InitializeComponent();
         }
-        string conString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Airlines_App;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
+        string conString = ConnectionString.conString;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

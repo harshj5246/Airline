@@ -22,8 +22,7 @@ namespace Airlines_App
     /// </summary>
     public partial class BookingDetails : Window
     {
-        string conString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Airlines_App;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
+        string conString = ConnectionString.conString;
         public BookingDetails()
         {
             InitializeComponent();

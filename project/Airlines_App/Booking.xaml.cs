@@ -33,7 +33,7 @@ namespace Airlines_App
 
 
         }
-        string conString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Airlines_App;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        string conString = ConnectionString.conString;
 
         public void ReadFields()
         {
@@ -68,59 +68,73 @@ namespace Airlines_App
                 txt_noftickets.Focus();
                 return;
             }
-            if (cmb_class.SelectedItem == null)
+            else if (cmb_class.SelectedItem == null)
             {
                 MessageBox.Show("select the class");
                 cmb_class.Focus();
                 return;
             }
-
-            SqlConnection con = new SqlConnection(conString);
-            con.Open();
-
-            string qur = string.Format("insert into booking(flight_id,username,source,destination,class,date,no_of_tickets,total_amount,Airline_name) values('{0}','{1}','{2}','{3}','{4}','{5}',{6},{7},'{8}');select scope_identity();", txt_flightid.Text, txt_usernamebk.Text, txt_sourcebk.Text, txt_destinationbk.Text, cmb_class.Text.ToString(), txt_datebk.Text, txt_noftickets.Text, txt_totalamount.Text,txt_Arilinenamebk.Text); 
-
-            SqlCommand cmd = new SqlCommand(qur, con);
-
-            int no1 = seats();
-            int editno = no1 -int.Parse(txt_noftickets.Text);
-
-
-            SqlConnection fcon = new SqlConnection(conString);
-            fcon.Open();
-            string query = ("Update Flight set  Seat_Left = " + editno + " Where flight_id ='" + txt_flightid.Text + "'");
-
-
-            SqlCommand cmmd = new SqlCommand(query, con);
-
-            cmmd.ExecuteNonQuery();
-            fcon.Close();
-            cmmd.Dispose();
-
-
-
-
-            long newid = long.Parse(cmd.ExecuteScalar().ToString());
-            flightid = newid;
-
-
-            con.Close();
-            MessageBoxResult res = MessageBox.Show("Do you want to Confirm Ticket booking?", "Confirmation", MessageBoxButton.OKCancel);
-            if (res == MessageBoxResult.OK)
+            else if(txt_totalamount.Text == "0")
             {
-                ConfirmBooking cb = new ConfirmBooking();
-                this.Visibility = Visibility.Collapsed;
-                cb.Show();
+                MessageBox.Show("enter no. of Seats");
+                txt_noftickets.Focus();
+                return;
+            }
+            int no1 = seats();
+            int editno = no1 - int.Parse(txt_noftickets.Text);
+
+            if ( no1 < int.Parse(txt_noftickets.Text))
+            {
+                MessageBox.Show("Avilable seats are " + no1);
+                return;
             }
             else
             {
-                Dashboard db = new Dashboard();
-                this.Visibility = Visibility.Collapsed;
-                db.Show();
+                SqlConnection con = new SqlConnection(conString);
+                con.Open();
+
+                string qur = string.Format("insert into booking(flight_id,username,source,destination,class,date,no_of_tickets,total_amount,Airline_name) values('{0}','{1}','{2}','{3}','{4}','{5}',{6},{7},'{8}');select scope_identity();", txt_flightid.Text, txt_usernamebk.Text, txt_sourcebk.Text, txt_destinationbk.Text, cmb_class.Text.ToString(), txt_datebk.Text, txt_noftickets.Text, txt_totalamount.Text, txt_Arilinenamebk.Text);
+
+                SqlCommand cmd = new SqlCommand(qur, con);
+
+
+
+
+                SqlConnection fcon = new SqlConnection(conString);
+                fcon.Open();
+                string query = ("Update Flight set  Seat_Left = " + editno + " Where flight_id ='" + txt_flightid.Text + "'");
+
+
+                SqlCommand cmmd = new SqlCommand(query, con);
+
+                cmmd.ExecuteNonQuery();
+                fcon.Close();
+                cmmd.Dispose();
+
+
+
+
+                long newid = long.Parse(cmd.ExecuteScalar().ToString());
+                flightid = newid;
+
+
+                con.Close();
+                MessageBoxResult res = MessageBox.Show("Do you want to Confirm Ticket booking?", "Confirmation", MessageBoxButton.OKCancel);
+                if (res == MessageBoxResult.OK)
+                {
+                    ConfirmBooking cb = new ConfirmBooking();
+                    this.Visibility = Visibility.Collapsed;
+                    cb.Show();
+                }
+                else
+                {
+                    Dashboard db = new Dashboard();
+                    this.Visibility = Visibility.Collapsed;
+                    db.Show();
+                }
+
+
             }
-
-
-
 
 
         }
@@ -157,11 +171,14 @@ namespace Airlines_App
 
         private void txt_totalamount_MouseEnter(object sender, MouseEventArgs e)
         {
-
+            if (txt_noftickets.Text == string.Empty)
+            {
+                txt_noftickets.Text = "0";
+            }
             if (cmb_class.SelectedIndex == 0)
             {
 
-
+                
 
                 int ticket_fare = int.Parse(txt_noftickets.Text);
                 int t = int.Parse(txt_flightcharge.Text);
@@ -173,6 +190,7 @@ namespace Airlines_App
             }
             else if (cmb_class.SelectedIndex == 1)
             {
+
                 int t = 1000 + int.Parse(txt_flightcharge.Text);
                 int ticket_fare = int.Parse(txt_noftickets.Text);
                 int tick = t * ticket_fare;
@@ -189,6 +207,7 @@ namespace Airlines_App
 
 
             }
+           
 
         }
 

@@ -28,7 +28,7 @@ namespace Airlines_App
             TxtSeatCapicity.Text = txt_seat_left.Text;
         }
 
-        string conString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Airlines_App;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        string conString = ConnectionString.conString;
 
         private void btn_dashbord_Click(object sender, RoutedEventArgs e)
         {
