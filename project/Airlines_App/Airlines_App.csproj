@@ -88,6 +88,7 @@
     <Compile Include="ConfirmBooking.xaml.cs">
       <DependentUpon>ConfirmBooking.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ConnectionString.cs" />
     <Compile Include="Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
