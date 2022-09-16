@@ -13,7 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
-
+using Airlines_App.Model;
+using Airlines_App.DAL;
 
 namespace Airlines_App
 {
@@ -48,41 +49,67 @@ namespace Airlines_App
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection con = new SqlConnection(conString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand();
-            string que = ("insert into Flight values ('" + TxtFlightID.Text + "','" + TxtAirlineName.Text + "','" + TxtSource.Text + "','" + TxtDestination.Text + "'," + TxtSeatCapicity.Text + ",'" + txt_depature.Text + "' ,'" + txt_arrival.Text + "'," + txt_flightcharge.Text +  ","+ txt_seat_left.Text+ " )");
-
-            cmd.CommandText = que;
-            cmd.Connection = con;
-
-            if (cmd.ExecuteNonQuery() != 0)
+            FlightModel model = new FlightModel();
+            model.flight_id = TxtFlightID.Text;
+            model.Airline_name = TxtAirlineName.Text;
+            model.source = TxtSource.Text;
+            model.designation = TxtDestination.Text;
+            model.seat_capacity = int.Parse(TxtSeatCapicity.Text);
+            model.depature = txt_depature.Text;
+            model.arraival_time = txt_arrival.Text;
+            model.flight_charge = double.Parse(txt_flightcharge.Text);
+            model.Seat_Left = int.Parse(txt_seat_left.Text);
+            bool res = FlightDAL.Create(model);
+            if(!res)
             {
-                MessageBox.Show("Data insert succesfully");
+                MessageBox.Show("Flight is not saved....");
+                return;
             }
+            MessageBox.Show("Flight is saved succesfully");
             BtnLoad_Click(null, null);
             BtnNew_Click(null, null);
 
-                con.Close();
-                cmd.Dispose();
-            
-           
-            
+            //SqlConnection con = new SqlConnection(conString);
+            //con.Open();
+            //SqlCommand cmd = new SqlCommand();
+            //string que = ("insert into Flight values ('" + TxtFlightID.Text + "','" + 
+            //    TxtAirlineName.Text + "','" + TxtSource.Text + "','" + TxtDestination.Text + "'," + 
+            //    TxtSeatCapicity.Text + ",'" + txt_depature.Text + "' ,'" + txt_arrival.Text + "'," + 
+            //    txt_flightcharge.Text +  ","+ txt_seat_left.Text+ " )");
+
+            //cmd.CommandText = que;
+            //cmd.Connection = con;
+
+            //if (cmd.ExecuteNonQuery() != 0)
+            //{
+            //    MessageBox.Show("Data insert succesfully");
+            //}
+            //BtnLoad_Click(null, null);
+            //BtnNew_Click(null, null);
+
+            //    con.Close();
+            //    cmd.Dispose();
+
+
+
         }
 
         private void BtnLoad_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection con = new SqlConnection(conString);
-            con.Open();
-            string query = "SELECT flight_id,Airline_name,source,designation,seat_capacity,depature,arraival_time,flight_charge,Seat_Left FROM Flight";
-            SqlCommand cmd = new SqlCommand(query, con);
+            List<FlightModel> flights = FlightDAL.ReadAll();
+            dtg_GrdFlight.ItemsSource = flights;
+
+            //SqlConnection con = new SqlConnection(conString);
+            //con.Open();
+            //string query = "SELECT flight_id,Airline_name,source,designation,seat_capacity,depature,arraival_time,flight_charge,Seat_Left FROM Flight";
+            //SqlCommand cmd = new SqlCommand(query, con);
 
 
-            SqlDataReader reader = cmd.ExecuteReader();
-            DataTable dt = new DataTable();
-            dt.Load(reader);
-            dtg_GrdFlight.ItemsSource = dt.DefaultView;
-            con.Close();
+            //SqlDataReader reader = cmd.ExecuteReader();
+            //DataTable dt = new DataTable();
+            //dt.Load(reader);
+            //dtg_GrdFlight.ItemsSource = dt.DefaultView;
+            //con.Close();
         }
 
         private void BtnNew_Click(object sender, RoutedEventArgs e)

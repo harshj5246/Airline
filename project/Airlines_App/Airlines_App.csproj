@@ -89,12 +89,14 @@
       <DependentUpon>ConfirmBooking.xaml</DependentUpon>
     </Compile>
     <Compile Include="ConnectionString.cs" />
+    <Compile Include="DAL\FlightDAL.cs" />
     <Compile Include="Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\FlightModel.cs" />
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
@@ -212,5 +214,6 @@
   <ItemGroup>
     <Resource Include="airline9.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

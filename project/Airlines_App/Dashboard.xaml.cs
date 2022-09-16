@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Data;
+using Airlines_App.Model;
+using Airlines_App.DAL;
 
 namespace Airlines_App
 {
@@ -48,56 +50,74 @@ namespace Airlines_App
                 txt_source.Focus();
                 MessageBox.Show("fill the Source  fields");
                 return;
-
             }
-            else if (txt_destination.Text == String.Empty)
-            {
+
+           if (txt_destination.Text == String.Empty)
+           {
                 txt_destination.Focus();
                 MessageBox.Show("fill the Destination fields");
                 return;
 
-            }
-            else if(dp_date.Text == String.Empty)
+           }
+
+            if(dp_date.Text == String.Empty)
             {
                 txt_destination.Focus();
                 MessageBox.Show("Select the Date ");
                 return;
             }
+           
+            dtg_GrdFlight.Visibility = Visibility.Visible;
+            List<FlightModel> flights = FlightDAL.ReadBySearch(txt_source.Text,
+                txt_destination.Text, (DateTime)dp_date.SelectedDate);
+            dtg_GrdFlight.ItemsSource = flights;
+
+            if (flights.Count > 0)
+            {
+                btn_Book.Visibility = Visibility.Visible;
+            }
             else
             {
-                //source = txt_source.Text;
-                //destination = txt_destination.Text;
-                //date = dp_date.Text;
-
-                //FlightList flightList = new FlightList();
-                //this.Visibility = Visibility.Collapsed;
-                //flightList.Show();
-
-                dtg_GrdFlight.Visibility = Visibility.Visible;
-              
-
-                SqlConnection con = new SqlConnection(conString);
-                con.Open();
-
-                string query = "SELECT flight_id,Airline_name,source,designation,seat_capacity,depature,arraival_time,flight_charge FROM Flight where source like '" + txt_source.Text + "' and designation like '" + txt_destination.Text+ "'";
-                SqlCommand cmd = new SqlCommand(query, con);
-
-
-                SqlDataReader reader = cmd.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(reader);
-                dtg_GrdFlight.ItemsSource = dt.DefaultView;
-                if (dt.Rows.Count > 0)
-                {
-                    btn_Book.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    MessageBox.Show("NO FLIGHT Avilable");
-                }
-                con.Close();
-
+                MessageBox.Show("NO FLIGHT Avilable");
             }
+            //source = txt_source.Text;
+            //destination = txt_destination.Text;
+            //date = dp_date.Text;
+
+            //FlightList flightList = new FlightList();
+            //this.Visibility = Visibility.Collapsed;
+            //flightList.Show();
+
+            //dtg_GrdFlight.Visibility = Visibility.Visible;
+
+
+            //SqlConnection con = new SqlConnection(conString);
+            //con.Open();
+
+            //string query = "SELECT flight_id,Airline_name,source,designation,seat_capacity,depature,arraival_time,flight_charge FROM Flight where source like '" + txt_source.Text + "' and designation like '" + txt_destination.Text+ "'";
+            //SqlCommand cmd = new SqlCommand(query, con);
+
+
+            //SqlDataReader reader = cmd.ExecuteReader();
+            //DataTable dt = new DataTable();
+            //dt.Load(reader);
+            //dtg_GrdFlight.ItemsSource = dt.DefaultView;
+            //if (dt.Rows.Count > 0)
+            //{
+            //    btn_Book.Visibility = Visibility.Visible;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("NO FLIGHT Avilable");
+            //}
+            //con.Close();
+
+
+
+
+
+
+
         }
 
         private void btn_logout_Click(object sender, RoutedEventArgs e)
