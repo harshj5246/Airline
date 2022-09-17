@@ -1,0 +1,109 @@
+﻿<Window x:Class="Customer_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Customer_WPF" xmlns:view_model="clr-namespace:EmployeeWpfMvvmApp.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="515" Width="842">
+    <Window.Resources>
+        <view_model:EmployeeViewModel x:Key="vmdl"/>
+    </Window.Resources>
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="Black"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <DockPanel LastChildFill="True">
+
+        <Menu DockPanel.Dock="Top" >
+            <MenuItem Header="List">
+                <MenuItem Header="Load" Click="BtnLoad_Click"/>
+                <MenuItem Header="New" Click="BtnNew_Click"/>
+                <Separator/>
+                <MenuItem Header="Edit"  Click="BtnEdit_Click"/>
+                <MenuItem Header="Delete"  Click="BtnDelete_Click"/>
+            </MenuItem>
+            <MenuItem Header="Form">
+                <MenuItem Header="Save"  Click="BtnSave_Click"/>
+            </MenuItem>
+            <MenuItem Header="Exit" Click="MenuItem_Click"/>
+        </Menu>
+
+        <ToolBarTray  DockPanel.Dock="Top">
+            <ToolBar>
+
+                <Button Height="32" Width="32" Click="BtnNew_Click">
+                    <!--<Image Source="new.png" Stretch="Fill"/>-->
+                </Button>
+
+                <Separator/>
+
+                <Button Height="32" Width="32" Click="BtnSave_Click">
+                    <!--<Image Source="save.png" Stretch="Fill"/>-->
+                </Button>
+
+            </ToolBar>
+        </ToolBarTray>
+
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock x:Name="lblStatus" />
+            </StatusBarItem>
+        </StatusBar>
+        <Grid x:Name="MyLayout" DataContext="{StaticResource vmdl}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Canvas Grid.Column="0">
+                <DataGrid x:Name="GrdEmployees" HorizontalAlignment="Left" 
+                Height="247" 
+                VerticalAlignment="Top" 
+                Width="365"
+                AutoGenerateColumns="False" Canvas.Left="21" Canvas.Top="49"
+                     ItemsSource="{Binding EmployeesGrid}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Id}"  Header="Id" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding Name}" Header="Customer Name" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding Creadit_limit}" Header="Creadit Limit" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding Address}" Header=" Address" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding Email}" Header="Email" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding supliyer_type}" Header="supliyer_type" IsReadOnly="True"/>
+
+
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button x:Name="BtnLoad" Content="Load" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85" Height="34" Canvas.Left="113" Canvas.Top="10" Click="BtnLoad_Click"/>
+                <Button x:Name="BtnNew" Content="New" HorizontalAlignment="Left" VerticalAlignment="Top" Width="87"  Height="34" Canvas.Left="21" Canvas.Top="10" Click="BtnNew_Click"/>
+                <Button x:Name="BtnEdit" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"  Height="32" Canvas.Left="21" Canvas.Top="301" Click="BtnEdit_Click"/>
+                <Button x:Name="BtnDelete" Content="Delete" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97"  Height="32" Canvas.Left="101" Canvas.Top="301" Click="BtnDelete_Click"/>
+            </Canvas>
+            <Canvas Grid.Column="1" DataContext="{Binding EmployeeForm}" Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}">
+                <Label x:Name="LblFormStatus" Content="New Customer" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.461,-0.885" Height="26" Width="89" Canvas.Left="23" Canvas.Top="18"/>
+                <Label x:Name="LblId" Content="ID" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="22" Canvas.Left="23" Canvas.Top="49"/>
+                <Label x:Name="LblName" Content="Name" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="42" Canvas.Left="23" Canvas.Top="98"/>
+                <Label x:Name="LblCreadit_limit" Content="Credit Limit" RenderTransformOrigin="1.409,3.231" Height="26" Width="74" Canvas.Left="23" Canvas.Top="152"/>
+                <Label x:Name="LblCAddress" Content=" Address" RenderTransformOrigin="4.636,1.923" Height="26" Width="89" Canvas.Left="23" Canvas.Top="204"/>
+                <Label x:Name="LblBAddress" Content="Email" RenderTransformOrigin="4.636,1.923" Height="26" Width="89" Canvas.Left="23" Canvas.Top="254"/>
+
+                <TextBox x:Name="TxtID" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" Canvas.Left="138" Canvas.Top="50" Text="{Binding Id}"/>
+                <TextBox x:Name="TxtName" HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" Canvas.Left="138" Canvas.Top="100" Text="{Binding Name}"/>
+                <TextBox x:Name="TxtCreditLimit" HorizontalAlignment="Left" Height="36" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" Canvas.Left="138" Canvas.Top="153" Text="{Binding Creadit_limit}"/>
+                <TextBox x:Name="TxtcommunicationAdd" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" Canvas.Left="138" Canvas.Top="207" Text="{Binding Address}"/>
+                <TextBox x:Name="TxtbillingAdd" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" Canvas.Left="138" Canvas.Top="257" Text="{Binding Email}"/>
+                <TextBox x:Name="Txtsupliyer" Height="35" TextWrapping="Wrap" Width="244" Canvas.Left="138" Canvas.Top="307" Text="{Binding supliyer_type }" Visibility="Hidden"/>
+
+
+                <Button x:Name="BtnSave" Content="Save" Width="148" Height="40" Canvas.Left="23" Canvas.Top="372" Click="BtnSave_Click"/>
+                <Label x:Name="Lblsupliyer" Content="Supliyer type" RenderTransformOrigin="4.636,1.923" Height="26" Width="89" Canvas.Left="23" Canvas.Top="304"/>
+                <RadioButton x:Name="pri" Content="Privilege" Canvas.Left="138" Canvas.Top="313" Checked="pri_Checked"/>
+                <RadioButton x:Name="normal" Content="Normal" Canvas.Left="260" Canvas.Top="313" Checked="normal_Checked"/>
+
+            </Canvas>
+
+        </Grid>
+
+    </DockPanel>
+</Window>
