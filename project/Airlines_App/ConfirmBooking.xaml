@@ -6,10 +6,7 @@
         xmlns:local="clr-namespace:Airlines_App"
         mc:Ignorable="d"
         Title="ConfirmBooking" Height="450" Width="800">
-    <Canvas x:Name="txt_totalamount_cfb" Height="662" Width="908" Canvas.Top="10">
-        <Canvas.Background>
-            <ImageBrush ImageSource="airline5.jpg"/>
-        </Canvas.Background>
+    <Canvas x:Name="txt_totalamount_cfb" Height="662" Width="908" Canvas.Top="10" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
 
         <Label x:Name="lbl_Noftickets" Content="Number of Tickets" RenderTransformOrigin="4.636,1.923" Height="31" Width="122" FontWeight="Bold" FontSize="14" FontFamily="Arial Unicode MS" Canvas.Left="431" Canvas.Top="340"/>
         <TextBox x:Name="txt_fightid" Height="28" TextWrapping="Wrap" Width="145" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Hidden" Canvas.Left="175" Canvas.Top="287"/>
@@ -118,6 +115,7 @@
         </Button>
         <Label x:Name="lbl_ticketid" Content="" Canvas.Left="112" FontSize="20"  Canvas.Top="90" Width="136" Height="35" FontFamily="Algerian"/>
         <Label Content="Ticket" Canvas.Left="342" Canvas.Top="90" Background="{x:Null}" FontFamily="Algerian" FontSize="48" Width="179"/>
+        <Label Content="Tccket ID-" Canvas.Left="10" Canvas.Top="101" Height="26" Width="71" FontWeight="Bold" FontSize="14"/>
 
     </Canvas>
 </Window>
